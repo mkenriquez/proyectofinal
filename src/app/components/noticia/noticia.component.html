@@ -1,0 +1,32 @@
+<ion-card >
+  <ion-card-subtitle class="ion-margin">
+
+    <!-- Metodo para abrir noticia -->
+    <ion-row class="ion-aling-item-center" (click)="Abrir()">
+      <ion-col  class="ion-margin">
+        <span class="article-index"> {{ index }} </span>
+        <span class="article-name"> {{ noticia.source.name}}</span>
+      </ion-col>
+
+      <ion-col align="right">
+      <ion-button (click)="onClick()" fill="clear">
+        <ion-icon  slot="icon-only" name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-card-subtitle>
+
+
+
+  <ion-card-title class="ion-padding-horizontal  ion-margin-botton">
+    {{ noticia.title }}
+  </ion-card-title>
+  <ion-img  *ngIf="noticia.urlToImage" [src]="noticia.urlToImage" (click)="Abrir()">
+  </ion-img>
+
+  <ion-card-content *ngIf="noticia.description">
+    <p>{{noticia.description}}</p>
+    
+  </ion-card-content>
+
+</ion-card>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { DataNewsService } from '../services/data-news.service';
+import { Article } from '../interfaces/interfaces';
+
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +9,18 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  
+  noticias:  Article[] = [];
 
-  constructor() {}
+  constructor(private dataNews: DataNewsService) {}
 
+  ngOnInit(): void{
+    this.dataNews.getNoticias().
+    subscribe(
+      resp => {
+       // console.log(resp) 
+        this.noticias = resp.articles;
+      });
+  
+  }
 }
