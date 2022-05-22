@@ -1,34 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Article, Source } from '../interfaces/interfaces';
-import { ToastController } from '@ionic/angular'; 
-import { Storage } from '@ionic/storage-angular'; 
+import { Storage } from '@ionic/storage';
+import { Article } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataLocalService {
 
-  noticias: Source[] = []; constructor(private storage: Storage , private toastController: ToastController) {}
-
-  async presentToast(message: string) {
-     const toast = await this.toastController.create({ message, duration: 1500, }); toast.present(); 
+  constructor(private storage: Storage) {
+    this.cargarFavoritos();
    }
-   public setNoticia(noticia: Source) { 
-     let exist = false; 
-     let message: string; 
-     for (const m of this.noticias) {
-        if (m.name === noticia.name) { exist = true; break; } 
-       } 
-       if (exist) { 
-        this.noticias = this.noticias.filter((m) => m.name !== noticia.name);
-          message = 'Favorito Eliminado '; } else 
-       { this.noticias.push(noticia); message = 'Favorito Agregado' 
-     } 
-     this.storage.set('noticias', this.noticias); 
-     this.presentToast(message) } 
-     async getNoticias() { 
-       const noticias = await this.storage.get('noticias'); 
-       this.noticias = noticias || []; 
-       return this.noticias; } 
+
+  noticias: Article[] = [];
+
+  async guardarNoticia(noticia: Article) {
+
+    const existe = await this.noticias.find( noti => noti.title === noticia.title);
+
+    if (!existe) {
+      this.noticias.unshift( noticia );
+      this.storage.set('favoritos', this.noticias);
+      return true;
+    }
+    return false;
+  }
+
+  async cargarFavoritos() {
+    const favoritos = await this.storage.get('favoritos');
+
+    if (favoritos) {
+      this.noticias = favoritos;
+    }
+
+  }
+  async borrarNoticia(noticia: Article) {
+    this.noticias = await this.noticias.filter( (noti: Article) => noti.title !== noticia.title );
+    this.storage.set('favoritos', this.noticias);
+  }
 
 }

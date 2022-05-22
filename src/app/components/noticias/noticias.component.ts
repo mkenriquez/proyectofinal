@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article } from 'src/app/interfaces/interfaces';
-
 import { DataLocalService } from 'src/app/services/data-local.service';
 
 @Component({

@@ -1,17 +1,24 @@
-<ion-header [translucent]="true"  class="ion-no-border">
+<ion-header no-border>
   <ion-toolbar>
     <ion-title>
-      Favoritos
+      Favorite
     </ion-title>
+    <ion-avatar slot="start" class="ion-padding">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/d77a6343106623.57e3765daad26.jpg">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <app-noticias *ngIf="dataLocalService.noticias.length > 0" [noticias]="dataLocalService.noticias" [enFavoritos]="true"></app-noticias>
+
+  <!--<h2 color="light" text-center *ngIf="dataLocalService.noticias.length === 0">No Favorite News</h2>-->
+
+  <ion-slides [options]="sliderOpts" *ngIf="dataLocalService.noticias.length === 0">
+    <ion-slide>
+      <h1 color="light">No Favorite News</h1>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>
