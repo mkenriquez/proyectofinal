@@ -3,7 +3,7 @@ import { Article } from 'src/app/interfaces/interfaces';
 import { ActionSheetController } from '@ionic/angular';
 //import Plugin
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
-
+import { DataLocalService } from 'src/app/services/data-local.service';
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.component.html',
@@ -13,9 +13,10 @@ export class NoticiaComponent {
 
   @Input() noticia: Article;
   @Input() index: number;
+  @Input() favoritos;
 
-
-  constructor(private actionSheetController: ActionSheetController , private web: InAppBrowser) { }
+  constructor(private actionSheetController: ActionSheetController , 
+    private web: InAppBrowser, private dataLocalService: DataLocalService) { }
 
   
   //Metodo para action-sheet
@@ -39,8 +40,9 @@ export class NoticiaComponent {
         text: 'Favorite',
         icon: 'heart',
         handler: () => {
-          //this.dataLocalService.setNoticia(this.);
-          //console.log('Favorite clicked');
+          this.onToggleFavorite()
+          // this.dataLocalService.setNoticia(this.noticia);
+          // console.log('Favorite clicked');
         }
       }, {
         text: 'Cancel',
@@ -62,5 +64,9 @@ export class NoticiaComponent {
 
     window.open(this.noticia.url, '_blank');
 
+  }
+
+  onToggleFavorite(){
+    console.log('toggle favorite')
   }
 }

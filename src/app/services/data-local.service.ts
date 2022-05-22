@@ -17,10 +17,10 @@ export class DataLocalService {
      let exist = false; 
      let message: string; 
      for (const m of this.noticias) {
-        if (m.id === noticia.id) { exist = true; break; } 
+        if (m.name === noticia.name) { exist = true; break; } 
        } 
        if (exist) { 
-        this.noticias = this.noticias.filter((m) => m.id !== noticia.id);
+        this.noticias = this.noticias.filter((m) => m.name !== noticia.name);
           message = 'Favorito Eliminado '; } else 
        { this.noticias.push(noticia); message = 'Favorito Agregado' 
      } 

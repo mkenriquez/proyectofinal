@@ -1,17 +1,21 @@
 <ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>
-      Categorias
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Categorias</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+
+    Categorias
+
+    </ion-title>
+<ion-avatar slot="start" class="ion-padding">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/d77a6343106623.57e3765daad26.jpg">
+          </ion-avatar>
+  </ion-toolbar>
+
+</ion-header >
+
+<ion-content [fullscreen]="true" >
+  
 
   <ion-segment [value]="selectedCategory" 
 (ionChange)="segmentChanged($event)"
@@ -22,7 +26,9 @@ mode="md">
         <ion-label class="ion-text-capitalize">{{category}}</ion-label>
     </ion-segment-button>
 
-    <app-noticias [noticias]="noticias" ></app-noticias>
+    
 
 </ion-segment>
+
+<app-noticias [noticias]="noticias" ></app-noticias>
 </ion-content>

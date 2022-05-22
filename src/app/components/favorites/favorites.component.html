@@ -3,7 +3,7 @@
     <ion-row *ngFor="let noticia of noticias">
       <ion-col size="12">
         <ion-card>
-          <h1>{{ noticia.title }}</h1>
+          <h1>{{ noticia.source.name}}</h1>
           <img class="poster" [src]="noticia.urlToImage | imagen">
          </ion-card>
       </ion-col>

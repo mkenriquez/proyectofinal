@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ResultNews, Article } from '../interfaces/interfaces';
 
+//variables declaradas en environment
 const URL = environment.URL;
 const API_KEY = environment.API_KEY;
 
@@ -19,28 +20,24 @@ export class DataNewsService {
   constructor(private http: HttpClient) { }
 
 
-
+  //optimizacion de url
   private execQuery<T>(query: string){
 
     query = URL + query;
 
-    query += `country=us&apiKey=${API_KEY}`;
+    query += `country=mx&apiKey=${API_KEY}`;
 
     return this.http.get<T>(query);
 
   }
 
-
-
+  //metodo para noticias 
   getNoticias(){
-
-    return this.execQuery<ResultNews>('/top-headlines?');
-
+    return this.execQuery<ResultNews>(`/top-headlines?`);
   }
 
-  getCategorias(event: string){
-
-  return this.execQuery<Article>('/top-headlines?category=${category}');
-  }
-
+  //metodo para noticias para categoria
+   getCategoria(categoria: string){
+     return this.http.get<ResultNews>(`https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=mx&category=${categoria}`);
+   }
 }
