@@ -34,13 +34,13 @@ export class DataNewsService {
 
   getNoticias(){
 
-    return this.execQuery<ResultNews>('v2/top-headlines?');
+    return this.execQuery<ResultNews>('/top-headlines?');
 
   }
 
-  // getCategorias(category: string){
+  getCategorias(event: string){
 
-  //   return this.execQuery<Article>('v2/top-headlines?category=${category}');
-  // }
+  return this.execQuery<Article>('/top-headlines?category=${category}');
+  }
 
 }

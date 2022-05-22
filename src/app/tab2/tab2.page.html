@@ -13,5 +13,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-categorias></app-categorias>
+  <ion-segment [value]="selectedCategory" 
+(ionChange)="segmentChanged($event)"
+scrolable 
+mode="md">
+
+    <ion-segment-button *ngFor="let category of categories" [value]="category">
+        <ion-label class="ion-text-capitalize">{{category}}</ion-label>
+    </ion-segment-button>
+
+    <app-noticias [noticias]="noticias" ></app-noticias>
+
+</ion-segment>
 </ion-content>

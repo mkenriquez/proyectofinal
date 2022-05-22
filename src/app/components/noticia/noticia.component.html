@@ -2,10 +2,10 @@
   <ion-card-subtitle class="ion-margin">
 
     <!-- Metodo para abrir noticia -->
-    <ion-row class="ion-aling-item-center" (click)="Abrir()">
+    <ion-row class="ion-aling-item-center">
       <ion-col  class="ion-margin">
         <span class="article-index"> {{ index }} </span>
-        <span class="article-name"> {{ noticia.source.name}}</span>
+        <span class="article-name" > {{ noticia.source.name}}</span>
       </ion-col>
 
       <ion-col align="right">
@@ -26,7 +26,7 @@
 
   <ion-card-content *ngIf="noticia.description">
     <p>{{noticia.description}}</p>
-    
+    <p (click)="Abrir()"> Ver mas...</p>
   </ion-card-content>
 
 </ion-card>
