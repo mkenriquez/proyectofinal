@@ -3,16 +3,14 @@ import { Article } from 'src/app/interfaces/interfaces';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { ActionSheetController, ToastController } from '@ionic/angular';
 import {DataLocalService} from 'src/app/services/data-local.service'
-
 @Component({
-  selector: 'app-noticia',
-  templateUrl: './noticia.component.html',
-  styleUrls: ['./noticia.component.scss'],
+  selector: 'app-nota',
+  templateUrl: './nota.component.html',
+  styleUrls: ['./nota.component.scss'],
 })
-export class NoticiaComponent implements OnInit {
+export class NotaComponent implements OnInit {
 
-  @Input() noticia: Article;
-  @Input() index: number;
+  @Input() nota: Article;
   @Input() Favoritos;
 
   constructor(private iab: InAppBrowser,
@@ -22,9 +20,11 @@ export class NoticiaComponent implements OnInit {
              ) { }
 
   ngOnInit() {}
+
+  
 // metodo abrir noticia en navegador
   Abrir() {
-    const browser = this.iab.create(this.noticia.url, '_blank');
+    const browser = this.iab.create(this.nota.url, '_blank');
   }
 
   async onClick() {
@@ -39,7 +39,7 @@ export class NoticiaComponent implements OnInit {
         handler: () => {
         console.log('Delete clicked');
         this.presentToast(`Eliminado`, 'danger');
-        this.dataLocalService.borrarNoticia(this.noticia);
+        this.dataLocalService.borrarNoticia(this.nota);
         }
       };
     } else {
@@ -48,8 +48,8 @@ export class NoticiaComponent implements OnInit {
         icon: 'heart',
         cssClass: 'action-dark',
         handler: async () => {
-        console.log('Favorite clicked');
-        const existe = await this.dataLocalService.guardarNoticia(this.noticia);
+        console.log('Favorito clicked');
+        const existe = await this.dataLocalService.guardarNoticia(this.nota);
 
         if (existe) {
           this.presentToast(`Guardado`, 'success');
@@ -68,7 +68,7 @@ export class NoticiaComponent implements OnInit {
           icon: 'share',
           cssClass: 'action-dark',
           handler: () => {
-          console.log('Share clicked');
+          console.log('Compartir clicked');
           }
         },
         Options,
@@ -78,7 +78,7 @@ export class NoticiaComponent implements OnInit {
           role: 'cancel',
           cssClass: 'action-dark',
           handler: () => {
-          console.log('Cancel clicked');
+          console.log('Cancelar clicked');
           }
         }]
     });
@@ -88,7 +88,7 @@ export class NoticiaComponent implements OnInit {
   async presentToast(message: string, color) {
     const toast = await this.toastCtrl.create({
       message,
-      duration: 1000,
+      duration: 500,
       color,
       mode: 'md'
     });

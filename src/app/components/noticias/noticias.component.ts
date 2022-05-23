@@ -15,15 +15,9 @@ import { DataLocalService } from 'src/app/services/data-local.service';
 export class NoticiasComponent implements OnInit {
 
   @Input() noticias: Article[] = [];
-  @Input() index: number;
-  @Input() title: string = '';
   @Input() Favoritos = false;
 
   constructor(private dataLocalService: DataLocalService) { }
 
   ngOnInit() {}
-
-
-  
-  
 }

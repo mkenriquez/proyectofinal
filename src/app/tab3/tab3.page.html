@@ -1,21 +1,12 @@
-<ion-header no-border>
-  <ion-toolbar>
-    <ion-title>
-      Favoritos
-    </ion-title>
-    <ion-avatar slot="start" class="ion-padding">
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/d77a6343106623.57e3765daad26.jpg">
-    </ion-avatar>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Favoritos"></app-header>
 
 <ion-content class="ion-padding">
 
   <app-noticias *ngIf="dataLocalService.noticias.length > 0" [noticias]="dataLocalService.noticias" [Favoritos]="true"></app-noticias>
   
-  <ion-slides [options]="sliderOpts" *ngIf="dataLocalService.noticias.length === 0">
+  <ion-slides  *ngIf="dataLocalService.noticias.length === 0">
     <ion-slide>
-      <h1>No Hay Noticias</h1>
+      <h1>No Hay Favoritos</h1>
     </ion-slide>
   </ion-slides>
 

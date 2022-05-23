@@ -7,18 +7,21 @@ import { Article } from '../interfaces/interfaces';
 })
 export class DataLocalService {
 
+
   constructor(private storage: Storage) {
     this.cargarFavoritos();
    }
 
   noticias: Article[] = [];
 
-  async guardarNoticia(noticia: Article) {
 
-    const existe = await this.noticias.find( noti => noti.title === noticia.title);
+  //se valida mediante el titulo de la noticia 
+  async guardarNoticia(nota: Article) {
+
+    const existe = await this.noticias.find( noti => noti.title === nota.title);
 
     if (!existe) {
-      this.noticias.unshift( noticia );
+      this.noticias.unshift( nota );
       this.storage.set('favoritos', this.noticias);
       return true;
     }
@@ -34,8 +37,8 @@ export class DataLocalService {
 
   }
 
-  async borrarNoticia(noticia: Article) {
-    this.noticias = await this.noticias.filter( (noti: Article) => noti.title !== noticia.title );
+  async borrarNoticia(nota: Article) {
+    this.noticias = await this.noticias.filter( (noti: Article) => noti.title !== nota.title );
     this.storage.set('favoritos', this.noticias);
   }
 
