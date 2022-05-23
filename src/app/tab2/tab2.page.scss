@@ -2,4 +2,10 @@
     display: none !important;
     overflow: hidden;
 }
+.selector{
+    color:#311B92;
+}
 
+ion-segment-button{
+    --color-checked: #311B92;
+}
