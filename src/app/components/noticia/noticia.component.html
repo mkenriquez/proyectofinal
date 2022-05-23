@@ -1,14 +1,15 @@
-<ion-card >
+<ion-card class="cardnoticia">
   <ion-card-subtitle class="ion-margin">
 
     <!-- Metodo para abrir noticia -->
-    <ion-row class="ion-aling-item-center">
+    <ion-row class="ion-aling-item-center" fixed>
       <ion-col  class="ion-margin">
-        <span class="article-index"> {{ index }} </span>
+       <!--<span class="article-index"> {{ index }} </span>-->
         <span class="article-name" > {{ noticia.source.name}}</span>
       </ion-col>
 
       <ion-col align="right">
+         <!--action-sheet-->
       <ion-button (click)="onClick()" fill="clear">
         <ion-icon  slot="icon-only" name="ellipsis-horizontal-outline"></ion-icon>
       </ion-button>
@@ -21,12 +22,12 @@
   <ion-card-title class="ion-padding-horizontal  ion-margin-botton">
     {{ noticia.title }}
   </ion-card-title>
-  <ion-img  *ngIf="noticia.urlToImage" [src]="noticia.urlToImage" (click)="Abrir()">
+  <ion-img  *ngIf="noticia.urlToImage" [src]="noticia.urlToImage" (click)="Abrir()" class="ion-margin">
   </ion-img>
 
   <ion-card-content *ngIf="noticia.description">
     <p>{{noticia.description}}</p>
-    <p (click)="Abrir()"> Ver mas...</p>
+    <a (click)="Abrir()"> Ver mas...</a>
   </ion-card-content>
 
 </ion-card>

@@ -14,13 +14,10 @@
 
 </ion-header >
 
-<ion-content [fullscreen]="true" >
+<ion-content class="ion-padding" >
   
 
-  <ion-segment [value]="selectedCategory" 
-(ionChange)="segmentChanged($event)"
-scrolable 
-mode="md">
+  <ion-segment [value]="selectedCategory" (ionChange)="segmentChanged($event)" scrollable  mode="md">
 
     <ion-segment-button *ngFor="let category of categories" [value]="category">
         <ion-label class="ion-text-capitalize">{{category}}</ion-label>
