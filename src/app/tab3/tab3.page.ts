@@ -9,11 +9,7 @@ import { Article } from 'src/app/interfaces/interfaces';
 })
 export class Tab3Page implements OnInit {
 
-  // sliderOpts = {
-  //   allowSlidePrev: false,
-  //   allowSlideNext: false
-  // };
-
+  
   constructor(public dataLocalService: DataLocalService) {}
 
   ngOnInit() {

@@ -13,7 +13,7 @@ export class NoticiaComponent implements OnInit {
 
   @Input() noticia: Article;
   @Input() index: number;
-  @Input() enFavoritos;
+  @Input() Favoritos;
 
   constructor(private iab: InAppBrowser,
               private actionSheetCtrl: ActionSheetController,
@@ -31,20 +31,20 @@ export class NoticiaComponent implements OnInit {
 
     let Options;
 
-    if (this.enFavoritos) {
+    if (this.Favoritos) {
       Options = {
-        text: 'Delete',
+        text: 'Eliminar',
         icon: 'trash',
         cssClass: 'action-dark',
         handler: () => {
         console.log('Delete clicked');
-        this.presentToast(`Deleted`, 'danger');
+        this.presentToast(`Eliminado`, 'danger');
         this.dataLocalService.borrarNoticia(this.noticia);
         }
       };
     } else {
       Options = {
-        text: 'Favorite',
+        text: 'Favorito',
         icon: 'heart',
         cssClass: 'action-dark',
         handler: async () => {
@@ -52,9 +52,9 @@ export class NoticiaComponent implements OnInit {
         const existe = await this.dataLocalService.guardarNoticia(this.noticia);
 
         if (existe) {
-          this.presentToast(`Saved`, 'success');
+          this.presentToast(`Guardado`, 'success');
         } else {
-          this.presentToast(`This news already exists`, 'danger');
+          this.presentToast(`Ya se guardo`, 'danger');
         }
 
         }
@@ -64,7 +64,7 @@ export class NoticiaComponent implements OnInit {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Share',
+          text: 'Compartir',
           icon: 'share',
           cssClass: 'action-dark',
           handler: () => {
@@ -73,7 +73,7 @@ export class NoticiaComponent implements OnInit {
         },
         Options,
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           icon: 'close',
           role: 'cancel',
           cssClass: 'action-dark',
@@ -90,7 +90,7 @@ export class NoticiaComponent implements OnInit {
       message,
       duration: 1000,
       color,
-      mode: 'ios'
+      mode: 'md'
     });
     toast.present();
   }

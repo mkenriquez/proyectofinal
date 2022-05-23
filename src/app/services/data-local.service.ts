@@ -15,7 +15,7 @@ export class DataLocalService {
 
   async guardarNoticia(noticia: Article) {
 
-    const existe = await this.noticias.find( noti => noti.title === noticia.title);
+    const existe = await this.noticias.find( noticia => noticia.title === noticia.title);
 
     if (!existe) {
       this.noticias.unshift( noticia );
@@ -34,7 +34,7 @@ export class DataLocalService {
 
   }
   async borrarNoticia(noticia: Article) {
-    this.noticias = await this.noticias.filter( (noti: Article) => noti.title !== noticia.title );
+    this.noticias = await this.noticias.filter( (noticia: Article) => noticia.title !== noticia.title );
     this.storage.set('favoritos', this.noticias);
   }
 
