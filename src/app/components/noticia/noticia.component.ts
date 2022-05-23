@@ -22,7 +22,7 @@ export class NoticiaComponent implements OnInit {
              ) { }
 
   ngOnInit() {}
-
+// metodo abrir noticia en navegador
   Abrir() {
     const browser = this.iab.create(this.noticia.url, '_blank');
   }

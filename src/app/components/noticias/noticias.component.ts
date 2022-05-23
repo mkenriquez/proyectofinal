@@ -17,7 +17,7 @@ export class NoticiasComponent implements OnInit {
   @Input() noticias: Article[] = [];
   @Input() index: number;
   @Input() title: string = '';
-  @Input() Favoritos;
+  @Input() Favoritos = false;
 
   constructor(private dataLocalService: DataLocalService) { }
 
