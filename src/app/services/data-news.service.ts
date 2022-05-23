@@ -38,6 +38,11 @@ export class DataNewsService {
 
   //metodo para noticias para categoria
    getCategoria(categoria: string){
-     return this.http.get<ResultNews>(`https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=mx&category=${categoria}`);
+     //return this.http.get<ResultNews>(`https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=mx&category=${categoria}`);
+     return this.execQuery<ResultNews>(`/top-headlines?category=${categoria}`);
    }
+
+
+
+
 }

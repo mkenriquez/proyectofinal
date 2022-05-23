@@ -17,10 +17,13 @@ export class NoticiasComponent implements OnInit {
   @Input() noticias: Article[] = [];
   @Input() index: number;
   @Input() title: string = '';
-
+  @Input() enFavoritos;
 
   constructor(private dataLocalService: DataLocalService) { }
 
   ngOnInit() {}
+
+
+  
   
 }

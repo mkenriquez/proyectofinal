@@ -27,7 +27,7 @@ export class NoticiaComponent implements OnInit {
     const browser = this.iab.create(this.noticia.url, '_blank');
   }
 
-  async lanzarMenu() {
+  async onClick() {
 
     let Options;
 
@@ -69,9 +69,6 @@ export class NoticiaComponent implements OnInit {
           cssClass: 'action-dark',
           handler: () => {
           console.log('Share clicked');
-
-          //this.compartirNoticia();
-
           }
         },
         Options,
@@ -97,36 +94,4 @@ export class NoticiaComponent implements OnInit {
     });
     toast.present();
   }
-
-  // compartirNoticia() {
-
-  //   if (this.platform.is('cordova') ) {
-
-  //     this.socialSharing.share(
-  //       this.noticia.title,
-  //       this.noticia.source.name,
-  //       '',
-  //       this.noticia.url
-  //     );
-
-  //   } else {
-
-  //     // tslint:disable-next-line:no-string-literal
-  //     if (navigator['share'] ) {
-  //       // tslint:disable-next-line:no-string-literal
-  //       navigator['share']({
-  //           title: this.noticia.title,
-  //           text: this.noticia.description ,
-  //           url: this.noticia.url,
-  //       })
-  //         .then(() => console.log('Successful share'))
-  //         .catch((error) => console.log('Error sharing', error));
-  //     } else {
-  //       this.presentToast(`Could not share, your device does not support this function.`, 'warning');
-  //     }
-
-  //   }
-
-  // }
-
 }

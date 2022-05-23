@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-toolbar>
     <ion-title>
-      Favorite
+      Favoritos
     </ion-title>
     <ion-avatar slot="start" class="ion-padding">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/d77a6343106623.57e3765daad26.jpg">
@@ -9,12 +9,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="beige">
 
   <app-noticias *ngIf="dataLocalService.noticias.length > 0" [noticias]="dataLocalService.noticias" [enFavoritos]="true"></app-noticias>
-
-  <!--<h2 color="light" text-center *ngIf="dataLocalService.noticias.length === 0">No Favorite News</h2>-->
-
+  
   <ion-slides [options]="sliderOpts" *ngIf="dataLocalService.noticias.length === 0">
     <ion-slide>
       <h1 color="light">No Favorite News</h1>
